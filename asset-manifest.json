@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/jobs-dashboard/static/css/main.31e924e9.chunk.css",
-    "main.js": "/jobs-dashboard/static/js/main.31b9354a.chunk.js",
-    "main.js.map": "/jobs-dashboard/static/js/main.31b9354a.chunk.js.map",
+    "main.js": "/jobs-dashboard/static/js/main.b92f57ff.chunk.js",
+    "main.js.map": "/jobs-dashboard/static/js/main.b92f57ff.chunk.js.map",
     "runtime-main.js": "/jobs-dashboard/static/js/runtime-main.7223f700.js",
     "runtime-main.js.map": "/jobs-dashboard/static/js/runtime-main.7223f700.js.map",
     "static/css/2.d34346ea.chunk.css": "/jobs-dashboard/static/css/2.d34346ea.chunk.css",
-    "static/js/2.5c8a577b.chunk.js": "/jobs-dashboard/static/js/2.5c8a577b.chunk.js",
-    "static/js/2.5c8a577b.chunk.js.map": "/jobs-dashboard/static/js/2.5c8a577b.chunk.js.map",
+    "static/js/2.76df36ca.chunk.js": "/jobs-dashboard/static/js/2.76df36ca.chunk.js",
+    "static/js/2.76df36ca.chunk.js.map": "/jobs-dashboard/static/js/2.76df36ca.chunk.js.map",
     "index.html": "/jobs-dashboard/index.html",
-    "precache-manifest.7c8000d142e05f29eddf12134d0f4027.js": "/jobs-dashboard/precache-manifest.7c8000d142e05f29eddf12134d0f4027.js",
+    "precache-manifest.cf5c37782c4ce0ad157e96a4887a30af.js": "/jobs-dashboard/precache-manifest.cf5c37782c4ce0ad157e96a4887a30af.js",
     "service-worker.js": "/jobs-dashboard/service-worker.js",
     "static/css/2.d34346ea.chunk.css.map": "/jobs-dashboard/static/css/2.d34346ea.chunk.css.map",
     "static/css/main.31e924e9.chunk.css.map": "/jobs-dashboard/static/css/main.31e924e9.chunk.css.map",
-    "static/js/2.5c8a577b.chunk.js.LICENSE.txt": "/jobs-dashboard/static/js/2.5c8a577b.chunk.js.LICENSE.txt",
+    "static/js/2.76df36ca.chunk.js.LICENSE.txt": "/jobs-dashboard/static/js/2.76df36ca.chunk.js.LICENSE.txt",
     "static/media/close.svg": "/jobs-dashboard/static/media/close.828fcf8b.svg",
     "static/media/exp.svg": "/jobs-dashboard/static/media/exp.48804530.svg",
     "static/media/job.svg": "/jobs-dashboard/static/media/job.23ca54fb.svg",
@@ -25,8 +25,8 @@
   "entrypoints": [
     "static/js/runtime-main.7223f700.js",
     "static/css/2.d34346ea.chunk.css",
-    "static/js/2.5c8a577b.chunk.js",
+    "static/js/2.76df36ca.chunk.js",
     "static/css/main.31e924e9.chunk.css",
-    "static/js/main.31b9354a.chunk.js"
+    "static/js/main.b92f57ff.chunk.js"
   ]
 }
