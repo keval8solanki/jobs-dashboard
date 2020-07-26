@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/jobs-dashboard/static/css/main.72b73854.chunk.css",
-    "main.js": "/jobs-dashboard/static/js/main.fb83e775.chunk.js",
-    "main.js.map": "/jobs-dashboard/static/js/main.fb83e775.chunk.js.map",
+    "main.js": "/jobs-dashboard/static/js/main.238ce184.chunk.js",
+    "main.js.map": "/jobs-dashboard/static/js/main.238ce184.chunk.js.map",
     "runtime-main.js": "/jobs-dashboard/static/js/runtime-main.7223f700.js",
     "runtime-main.js.map": "/jobs-dashboard/static/js/runtime-main.7223f700.js.map",
     "static/css/2.d34346ea.chunk.css": "/jobs-dashboard/static/css/2.d34346ea.chunk.css",
     "static/js/2.206aab6d.chunk.js": "/jobs-dashboard/static/js/2.206aab6d.chunk.js",
     "static/js/2.206aab6d.chunk.js.map": "/jobs-dashboard/static/js/2.206aab6d.chunk.js.map",
     "index.html": "/jobs-dashboard/index.html",
-    "precache-manifest.a4819b3e528f4ef08a82733238193aaa.js": "/jobs-dashboard/precache-manifest.a4819b3e528f4ef08a82733238193aaa.js",
+    "precache-manifest.0d05af04b2321fd781fe00c7daedfb49.js": "/jobs-dashboard/precache-manifest.0d05af04b2321fd781fe00c7daedfb49.js",
     "service-worker.js": "/jobs-dashboard/service-worker.js",
     "static/css/2.d34346ea.chunk.css.map": "/jobs-dashboard/static/css/2.d34346ea.chunk.css.map",
     "static/css/main.72b73854.chunk.css.map": "/jobs-dashboard/static/css/main.72b73854.chunk.css.map",
@@ -36,6 +36,6 @@
     "static/css/2.d34346ea.chunk.css",
     "static/js/2.206aab6d.chunk.js",
     "static/css/main.72b73854.chunk.css",
-    "static/js/main.fb83e775.chunk.js"
+    "static/js/main.238ce184.chunk.js"
   ]
 }
