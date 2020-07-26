@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5eb681fd1dfed75daab2394f71be7edd",
+    "revision": "4310181f93b2c37fec303674738b35d2",
     "url": "/jobs-dashboard/index.html"
   },
   {
-    "revision": "67043567d7e977bc3983",
+    "revision": "44d63d86344d0d3d78f6",
     "url": "/jobs-dashboard/static/css/2.d34346ea.chunk.css"
   },
   {
-    "revision": "6973fbc3f7b1cc1e52a0",
+    "revision": "45db658a64dbd9b7247f",
     "url": "/jobs-dashboard/static/css/main.72b73854.chunk.css"
   },
   {
-    "revision": "67043567d7e977bc3983",
-    "url": "/jobs-dashboard/static/js/2.628b09f5.chunk.js"
+    "revision": "44d63d86344d0d3d78f6",
+    "url": "/jobs-dashboard/static/js/2.8668593e.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/jobs-dashboard/static/js/2.628b09f5.chunk.js.LICENSE.txt"
+    "url": "/jobs-dashboard/static/js/2.8668593e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6973fbc3f7b1cc1e52a0",
-    "url": "/jobs-dashboard/static/js/main.e0a24b22.chunk.js"
+    "revision": "45db658a64dbd9b7247f",
+    "url": "/jobs-dashboard/static/js/main.127c71f1.chunk.js"
   },
   {
     "revision": "f4c7dc860407de061a9c",
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jobs-dashboard/static/media/candidate.98741c4a.svg"
   },
   {
-    "revision": "828fcf8b84fc9be9627d28ecc26b3ac1",
-    "url": "/jobs-dashboard/static/media/close.828fcf8b.svg"
+    "revision": "1b3c0f53a019becad005ae78f2c27218",
+    "url": "/jobs-dashboard/static/media/close.1b3c0f53.svg"
   },
   {
     "revision": "a07674e317ca41f10d01bee51d4e6b07",
