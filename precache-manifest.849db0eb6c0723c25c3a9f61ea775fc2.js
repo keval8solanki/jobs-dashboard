@@ -1,31 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8b2d54677bd4224a487ca8cd9c1fcfe9",
+    "revision": "be5a818df93e8d8d24582805f3376ed9",
     "url": "/jobs-dashboard/index.html"
   },
   {
-    "revision": "d90703eabcfa880b1b9d",
+    "revision": "0244978f93ea06150b11",
     "url": "/jobs-dashboard/static/css/2.d34346ea.chunk.css"
   },
   {
-    "revision": "0ff51a4b3084587137fa",
+    "revision": "c936e5ae3b2ba3331ede",
     "url": "/jobs-dashboard/static/css/main.72b73854.chunk.css"
   },
   {
-    "revision": "d90703eabcfa880b1b9d",
-    "url": "/jobs-dashboard/static/js/2.206aab6d.chunk.js"
+    "revision": "0244978f93ea06150b11",
+    "url": "/jobs-dashboard/static/js/2.7fc5e1a5.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/jobs-dashboard/static/js/2.206aab6d.chunk.js.LICENSE.txt"
+    "url": "/jobs-dashboard/static/js/2.7fc5e1a5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0ff51a4b3084587137fa",
-    "url": "/jobs-dashboard/static/js/main.238ce184.chunk.js"
+    "revision": "c936e5ae3b2ba3331ede",
+    "url": "/jobs-dashboard/static/js/main.09f0d7aa.chunk.js"
   },
   {
     "revision": "f4c7dc860407de061a9c",
     "url": "/jobs-dashboard/static/js/runtime-main.7223f700.js"
+  },
+  {
+    "revision": "ae539f4e541215337a2b7c96856c523e",
+    "url": "/jobs-dashboard/static/media/admin.ae539f4e.svg"
   },
   {
     "revision": "98741c4a16925d4e4e5daaa1e0116804",
@@ -38,10 +42,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "a07674e317ca41f10d01bee51d4e6b07",
     "url": "/jobs-dashboard/static/media/dashboard.a07674e3.svg"
-  },
-  {
-    "revision": "488045302a5d96e2af50bd0f0b127918",
-    "url": "/jobs-dashboard/static/media/exp.48804530.svg"
   },
   {
     "revision": "0296bf0efdd634498dd086a26a89b633",
@@ -60,10 +60,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jobs-dashboard/static/media/job.c62b1c08.svg"
   },
   {
-    "revision": "ceaa0781e98f9ec8d282b876ec98ef56",
-    "url": "/jobs-dashboard/static/media/loader-white.ceaa0781.svg"
-  },
-  {
     "revision": "3457399068b6d91d52c663eddbcb4a5e",
     "url": "/jobs-dashboard/static/media/loader.34573990.svg"
   },
@@ -80,12 +76,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jobs-dashboard/static/media/people.7999010a.svg"
   },
   {
-    "revision": "ae539f4e541215337a2b7c96856c523e",
-    "url": "/jobs-dashboard/static/media/profile.ae539f4e.svg"
+    "revision": "d4c3b5cb14f762c81850b794be1acafd",
+    "url": "/jobs-dashboard/static/media/profile.d4c3b5cb.svg"
   },
   {
-    "revision": "cb6077d6926f12757db71b86c0eed9c3",
-    "url": "/jobs-dashboard/static/media/salary.cb6077d6.svg"
+    "revision": "48bda764a38d169d188048313db1868c",
+    "url": "/jobs-dashboard/static/media/role.48bda764.svg"
+  },
+  {
+    "revision": "8501e0b9179d65c2b988b8a975b1d17e",
+    "url": "/jobs-dashboard/static/media/tick.8501e0b9.svg"
+  },
+  {
+    "revision": "e6a43cef5261e870e9e821b632d230a2",
+    "url": "/jobs-dashboard/static/media/tick.e6a43cef.ogg"
   },
   {
     "revision": "393b4839a56d82a0ceb88b38e7f3900f",
