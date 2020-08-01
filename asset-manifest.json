@@ -1,25 +1,24 @@
 {
   "files": {
     "main.css": "/jobs-dashboard/static/css/main.72b73854.chunk.css",
-    "main.js": "/jobs-dashboard/static/js/main.b5b5fc90.chunk.js",
-    "main.js.map": "/jobs-dashboard/static/js/main.b5b5fc90.chunk.js.map",
+    "main.js": "/jobs-dashboard/static/js/main.7304b567.chunk.js",
+    "main.js.map": "/jobs-dashboard/static/js/main.7304b567.chunk.js.map",
     "runtime-main.js": "/jobs-dashboard/static/js/runtime-main.7223f700.js",
     "runtime-main.js.map": "/jobs-dashboard/static/js/runtime-main.7223f700.js.map",
     "static/css/2.d34346ea.chunk.css": "/jobs-dashboard/static/css/2.d34346ea.chunk.css",
-    "static/js/2.7fc5e1a5.chunk.js": "/jobs-dashboard/static/js/2.7fc5e1a5.chunk.js",
-    "static/js/2.7fc5e1a5.chunk.js.map": "/jobs-dashboard/static/js/2.7fc5e1a5.chunk.js.map",
+    "static/js/2.1dc95bda.chunk.js": "/jobs-dashboard/static/js/2.1dc95bda.chunk.js",
+    "static/js/2.1dc95bda.chunk.js.map": "/jobs-dashboard/static/js/2.1dc95bda.chunk.js.map",
     "index.html": "/jobs-dashboard/index.html",
-    "precache-manifest.303892954d104510f33f339cb0fc31b0.js": "/jobs-dashboard/precache-manifest.303892954d104510f33f339cb0fc31b0.js",
+    "precache-manifest.835ac954dbca8f3ed3af7de0b20663e0.js": "/jobs-dashboard/precache-manifest.835ac954dbca8f3ed3af7de0b20663e0.js",
     "service-worker.js": "/jobs-dashboard/service-worker.js",
     "static/css/2.d34346ea.chunk.css.map": "/jobs-dashboard/static/css/2.d34346ea.chunk.css.map",
     "static/css/main.72b73854.chunk.css.map": "/jobs-dashboard/static/css/main.72b73854.chunk.css.map",
-    "static/js/2.7fc5e1a5.chunk.js.LICENSE.txt": "/jobs-dashboard/static/js/2.7fc5e1a5.chunk.js.LICENSE.txt",
+    "static/js/2.1dc95bda.chunk.js.LICENSE.txt": "/jobs-dashboard/static/js/2.1dc95bda.chunk.js.LICENSE.txt",
     "static/media/admin.svg": "/jobs-dashboard/static/media/admin.ae539f4e.svg",
     "static/media/candidate.svg": "/jobs-dashboard/static/media/candidate.98741c4a.svg",
     "static/media/close.svg": "/jobs-dashboard/static/media/close.1b3c0f53.svg",
     "static/media/dashboard.svg": "/jobs-dashboard/static/media/dashboard.a07674e3.svg",
     "static/media/fistbump-logo-white.svg": "/jobs-dashboard/static/media/fistbump-logo-white.0296bf0e.svg",
-    "static/media/fistbump-logo.svg": "/jobs-dashboard/static/media/fistbump-logo.ef76c49a.svg",
     "static/media/job-dashboard.svg": "/jobs-dashboard/static/media/job-dashboard.021b9f65.svg",
     "static/media/job.svg": "/jobs-dashboard/static/media/job.c62b1c08.svg",
     "static/media/loader.svg": "/jobs-dashboard/static/media/loader.34573990.svg",
@@ -35,8 +34,8 @@
   "entrypoints": [
     "static/js/runtime-main.7223f700.js",
     "static/css/2.d34346ea.chunk.css",
-    "static/js/2.7fc5e1a5.chunk.js",
+    "static/js/2.1dc95bda.chunk.js",
     "static/css/main.72b73854.chunk.css",
-    "static/js/main.b5b5fc90.chunk.js"
+    "static/js/main.7304b567.chunk.js"
   ]
 }
