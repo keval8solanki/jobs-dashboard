@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux'
-import { searchJobs } from '../Actions/JobsActions'
-import { searchCandidates } from '../Actions/CandidateActions'
 import { themeColor } from '../Common/Styles/StyledComponents'
 
 function SearchComponent({ setValue }) {
@@ -10,11 +7,7 @@ function SearchComponent({ setValue }) {
     const [val, setVal] = useState()
     const searchHandler = (e) => {
         e.preventDefault()
-
         setValue(val)
-
-
-
     }
     return (
         <SearchContainer onSubmit={searchHandler}>

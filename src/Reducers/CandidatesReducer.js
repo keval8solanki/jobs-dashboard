@@ -1,53 +1,49 @@
 import { candidateTypes } from '../ActionTypes/ActionTypes'
+import { statusFinder } from '../Common/Functions/helperFunctions'
 
 const initialState = {
-    candidates: [],
-    candidate: null,
-    filteredcandidates: undefined
+	candidates: null,
+	candidate: null,
+	filteredcandidates: undefined,
 }
 
 const CandidatesReducer = (state = initialState, { type, payload }) => {
-    switch (type) {
+	switch (type) {
+		case candidateTypes.SAVE_ALL_CANDIDATES:
+			return {
+				...state,
+				candidates: payload,
+			}
 
-        case candidateTypes.SAVE_ALL_CANDIDATES:
-            console.log(payload)
-            return {
-                ...state,
-                candidates: payload
-            }
+		case candidateTypes.SAVE_CURRENT_CANDIDATE:
+			return {
+				...state,
+				candidate: payload,
+			}
 
-        case candidateTypes.SAVE_CURRENT_CANDIDATE:
-            console.log(payload)
-            return {
-                ...state,
-                candidate: payload
-            }
+		case candidateTypes.FILTER_SEARCH_CANDITATE:
+			const searchVal = payload.toLowerCase()
+			const filterTemp = state.candidates.filter((item) => {
+				return item.name.toLowerCase().includes(searchVal)
+			})
 
-        case candidateTypes.FILTER_SEARCH_CANDITATE:
-            const searchVal = payload.toLowerCase()
-            console.log(searchVal)
-            const filterTemp = state.candidates.filter(item => {
-                return item.name.toLowerCase().includes(searchVal)
-            })
-            console.log(filterTemp)
+			return {
+				...state,
+				filteredcandidates: filterTemp,
+			}
 
-            return {
-                ...state,
-                filteredcandidates: filterTemp
-            }
+		case candidateTypes.CHANGE_STATUS:
+			const { status, index } = payload
+			let TEMP = { ...state.candidate }
+			TEMP.jobs[index].status = status
+			return {
+				...state,
+				candidate: TEMP,
+			}
 
-        case candidateTypes.CHANGE_STATUS:
-            console.log(payload)
-            let TEMP = { ...state.candidate }
-            TEMP.jobs[0].status = payload
-            return {
-                ...state,
-                candidate: TEMP
-            }
-
-        default:
-            return state
-    }
+		default:
+			return state
+	}
 }
 
 export default CandidatesReducer

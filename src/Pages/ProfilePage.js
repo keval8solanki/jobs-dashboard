@@ -1,16 +1,37 @@
 import React from 'react'
 import { Container, FlexDiv, Title, Card, statuscolors, CardTitle } from '../Common/Styles/StyledComponents'
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux'
-import { logout } from '../Actions/AuthActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { auth } from '../Actions/AuthActions'
+
+const contentVariant = {
+    initial: {
+        opacity: 0,
+        x:'+5vw'
+       
+    },
+    animate:{
+        opacity: 1,
+        x: 0,
+        transition:{
+            duration: 0.7,
+            ease: 'easeOut'
+            
+        }
+    }
+}
 
 function ProfilePage() {
     const dispatch = useDispatch()
+    const {data} = useSelector(state => state.authData)
+    const username = data && data.authData.username
+    const name = data && data.authData.role_id.name
+    
     const logoutHandler = () => {
-        dispatch(logout(false))
+        dispatch(auth(false))
     }
     return (
-        <Container>
+        <Container variants={contentVariant}>
             <FlexDiv>
                 <Title>Profile</Title>
                 <LogoutBtn onClick={logoutHandler}>Logout</LogoutBtn>
@@ -18,9 +39,9 @@ function ProfilePage() {
 
             <Card>
                 <CardTitle style={{ margin: '0px' }}>Username</CardTitle>
-                <Content style={{ marginBottom: '20px' }}>admin</Content>
-                <CardTitle style={{ margin: '0px' }}>Role</CardTitle>
-                <Content>Super Admin</Content>
+    <Content style={{ marginBottom: '20px' }}>{username}</Content>
+    <CardTitle style={{ margin: '0px' }}>Role</CardTitle>
+                <Content>{name}</Content>
 
             </Card>
 

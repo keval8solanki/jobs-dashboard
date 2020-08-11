@@ -1,63 +1,78 @@
 import React, { useState } from 'react'
-import { Card, Title, CardTitle, statuscolors, themeColor } from '../Common/Styles/StyledComponents'
-import styled, { css } from 'styled-components'
-import CloseSVG from '../Assets/Icons/close.svg'
+import ContentContainer from './ContentContainer'
+import Controls from './Controls'
+import { Btn, statuscolors, themeColor, Card, CardTitle, Title } from '../Common/Styles/StyledComponents'
+import { toast } from '../Components/Toast'
 import axios from 'axios'
 import { API_URI } from '../Endpoint'
-import { useSelector } from 'react-redux'
+import CloseSVG from '../Assets/Icons/close.svg'
+import styled, { css } from 'styled-components'
+import { Capitalize } from '../Common/Functions/helperFunctions'
 import { Redirect } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useHeaders } from '../Hooks/getData'
 
 
-
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
-toast.configure()
-
-function EditJobPage() {
-
+function InputJobDetails({ match }) {
+    const headers = useHeaders()
+    const path = match.path
     const { job } = useSelector(state => state.jobsData)
     console.log(job)
+    
+    const type = path.split('/')[2]
+    const id = type === 'edit' ? match.params.id : ''
 
-    const [isUpdated, setIsUpdated] = useState(false)
+    const text = Capitalize(type)
 
-    const [title, setTitle] = useState(job && job.title)
-    const [salary, setSalary] = useState(job && job.salary)
-    const [description, setDescription] = useState(job && job.description)
+    const setValue = (field, defaultVal) => {
+        if(job && type === 'edit'){
+            return job[field]
+        }
 
-    const [company, setCompany] = useState(job && job.company)
-    const [aboutCompany, setAboutCompany] = useState(job && job.aboutCompany)
-    const [location, setLocation] = useState(job && job.location)
+        return defaultVal
+    }
 
-    const [experience, setExperience] = useState(job && job.experience)
+    const [isDataChanged, setIsDataChanged] = useState(false)
+
+    const [title, setTitle] = useState(setValue('title', ''))
+    const [salary, setSalary] = useState(setValue('salary', ''))
+    const [description, setDescription] = useState(setValue('description', ''))
+
+    const [company, setCompany] = useState(setValue('company', ''))
+    const [aboutCompany, setAboutCompany] = useState(setValue('aboutCompany', ''))
+    const [location, setLocation] = useState(setValue('location', ''))
+
+    const [experience, setExperience] = useState(setValue('experience', ''))
 
     const [eligibilitiesVal, setEligibilitiesVal] = useState()
-    const [eligibilities, setEligibilities] = useState((job && job.eligibility) || [])
+    const [eligibilities, setEligibilities] = useState(setValue('eligibility', []))
 
     const [responsibilitiesVal, setResponsibilitiesVal] = useState()
-    const [responsibilities, setResponsibilities] = useState((job && job.responsibilities) || [])
+    const [responsibilities, setResponsibilities] = useState(setValue('responsibilities', []))
+    const [btnText, setBtnText] = useState(text)
 
     const isInputValid = title && description && company && aboutCompany && location && experience && eligibilities.length > 0 && responsibilities.length > 0
 
-    const [updateText, setUpdateText] = useState('Update')
-
 
     const resetHandler = () => {
-        setTitle(job && job.title)
-        setSalary(job && job.salary)
-        setDescription(job && job.description)
-        setCompany(job && job.company)
-        setLocation(job && job.location)
-        setAboutCompany(job && job.aboutCompany)
-        setExperience(job && job.experience)
-        setEligibilities(job && job.eligibility)
+        setTitle(setValue('title', ''))
+        setSalary(setValue('salary', ''))
+        setDescription(setValue('description', ''))
+        setCompany(setValue('company', ''))
+        setLocation(setValue('location', ''))
+        setAboutCompany(setValue('aboutCompany', ''))
+        setExperience(setValue('experience', ''))
+        setEligibilities(setValue('eligibility', []))
         setEligibilitiesVal('')
-        setResponsibilities(job && job.responsibilities)
+        setResponsibilities(setValue('responsibilities', []))
         setEligibilitiesVal('')
-        document.getElementById('update-title').focus()
+        document.getElementById('title').focus()
     }
 
-    const updateHandler = async () => {
-        setUpdateText('Updating...')
+
+    const sendDataHandler = async () => {
+        setBtnText(`${text}ing...`)
+        resetHandler()
         const data = {
             title,
             salary: salary ? salary : 'Not disclosed',
@@ -70,25 +85,29 @@ function EditJobPage() {
             responsibilities
         }
         console.log(data)
+        const request = type === 'edit' ? axios.put(`${API_URI}${id}`, data, {headers}) : axios.post(`${API_URI}create`, data ,{headers})
         try {
-            const response = await axios.put(`${API_URI}${job && job._id}`, data)
-            setIsUpdated(true)
-            toast.success('Job Updated succesfully', {
+            const response = await request
+            setIsDataChanged(true)
+            toast.success('Job Posted succesfully', {
                 position: toast.POSITION.BOTTOM_RIGHT
             })
-            setUpdateText('Update')
+            setBtnText('Post')
         } catch (err) {
-            toast.error('Error in job  succesfully', {
+            console.log(err)
+            toast.error('Error in posting job', {
                 position: toast.POSITION.BOTTOM_RIGHT
             })
-            setUpdateText('Update')
+            setBtnText('Post')
         }
+
     }
 
     const deleteItemHandler = (data, item, setCurrState) => {
         const FilteredData = data.filter(el => el !== item)
         setCurrState(FilteredData)
     }
+
 
     const renderList = (data, setCurrState) => {
         const list = data.map(item => {
@@ -109,24 +128,26 @@ function EditJobPage() {
         setResponsibilitiesVal('')
     }
 
+    const Buttons = (
+        <div>
+            <Btn color={statuscolors.failed} onClick={resetHandler}>Reset</Btn>
+            <Btn color={statuscolors.success} disabled={!isInputValid} onClick={sendDataHandler}>{btnText}</Btn>
+        </div>
+    )
 
     return (
-        <div>
-            <MainTitle>Update Job</MainTitle>
-            <Form>
-                <ControlCard>
-                    <CardTitle>Controls</CardTitle>
-                    <div>
-                        <Btn color={statuscolors.failed} onClick={resetHandler} >Reset</Btn>
-                        <Btn color={statuscolors.success} disabled={!isInputValid} onClick={updateHandler}>{updateText}</Btn>
-                    </div>
-                </ControlCard>
-                {/* <InfoCardContainer> */}
-                <Card>
+        <ContentContainer title={`${text} Job`}>
+
+            <Controls title={`${text} Controls`}>
+                {Buttons}
+            </Controls>
+
+            <Card>
+                <Section>
                     <CardTitle>Job Details</CardTitle>
                     <InputContainer>
                         <Label>Job Title</Label>
-                        <Input id="update-title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" />
+                        <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} type="text" />
                     </InputContainer>
                     <InputContainer>
                         <Label>Salary</Label>
@@ -136,6 +157,9 @@ function EditJobPage() {
                         <Label>Description</Label>
                         <Textarea value={description} onChange={(e) => setDescription(e.target.value)} type="text" />
                     </InputContainer>
+                </Section>
+
+                <Section>
                     <CardTitle>Company Details</CardTitle>
                     <InputContainer>
                         <Label>Name</Label>
@@ -149,13 +173,16 @@ function EditJobPage() {
                         <Label>About</Label>
                         <Textarea value={aboutCompany} onChange={(e) => setAboutCompany(e.target.value)} type="text" />
                     </InputContainer>
+                </Section>
+
+                <Section>
                     <CardTitle>Requirements</CardTitle>
                     <InputContainer>
                         <Label>Experience</Label>
                         <Input value={experience} onChange={(e) => setExperience(e.target.value)} type="text" />
                     </InputContainer>
                     <InputContainer>
-                        <Label>Eligibility</Label>
+                        <Label>Minimum qualifications</Label>
                         <InputWithButton onSubmit={(e) => {
                             e.preventDefault()
                             addHandler(eligibilities, setEligibilities, eligibilitiesVal)
@@ -167,7 +194,6 @@ function EditJobPage() {
                         <Ul>
                             {renderList(eligibilities, setEligibilities)}
                         </Ul>
-
                     </InputContainer>
                     <InputContainer>
                         <Label>Responsibilities</Label>
@@ -184,32 +210,18 @@ function EditJobPage() {
 
                         </Ul>
 
-
                     </InputContainer>
+                </Section>
+            </Card>
 
-                </Card>
-                {/* <RequirementCard>
-                        <CardTitle>Eligibility</CardTitle>
-                        <Ul>
-                            {renderList(eligibilities, setEligibilities)}
-                        </Ul>
-                        <CustomLabel>Responsibilities</CustomLabel>
-                        <Ul>
-
-                            {renderList(responsibilities, setResponsibilities)}
-
-                        </Ul>
-
-                    </RequirementCard>
-                </InfoCardContainer> */}
-
-            </Form>
-            {isUpdated && <Redirect to="/jobs" />}
-        </div>
+            {isDataChanged && <Redirect to="/jobs" />}
+        </ContentContainer>
     )
 }
 
-export default EditJobPage
+
+
+export default InputJobDetails
 
 const InputContainer = styled.div`
     display: flex;
@@ -230,6 +242,8 @@ const InputStyles = css`
         outline: none;
     }
 `
+
+
 
 const Textarea = styled.textarea`
     ${InputStyles}
@@ -271,20 +285,28 @@ const Form = styled.div`
 `
 
 const InputWithButton = styled.form`
+    width: 100%;
     margin-top: 10px;
     display:flex;
-    justify-content: space-between;
+    justify-content: stretch;
     align-items: center;
     
 `
 
+
 const AddButton = styled.button`
     border-style: none;
     color: white;
-    background-color: green;
+    border: 1px solid ${themeColor};
+    background-color: ${themeColor};
     padding: 5px 8px;
     &:focus{
         outline: none;
+    }
+
+    &:hover{
+        background-color: transparent;
+        color: ${themeColor}
     }
     border-radius: 0px 5px 5px 0px;
 `
@@ -313,8 +335,7 @@ const RequirementCard = styled(Card)`
 `
 
 const Ul = styled.ul`
-    border:1px dashed ${statuscolors.reviewBg};
-    
+    border:1px dashed ${statuscolors.reviewBg};   
     padding: 10px;
     list-style: none;
     display: flex;
@@ -347,28 +368,28 @@ const CustomLabel = styled(CardTitle)`
     position: sticky;
     top: 0;
 `
+//Changes
+// const Btn = styled.button`
+//     border-style: none;
+//     padding: 7px 10px;
+//     width: 130px;
+//     margin-right: 10px;
+//     color: white;
+//     border: 1px solid ${props => props && props.color};
+//     background-color: ${props => props && props.color};
+//     &:hover{
+//         background-color: transparent;
+//         color: ${props => props && props.color};
+//     }
+//     &:focus{
+//         outline: none;
+//     }
 
-const Btn = styled.button`
-    border-style: none;
-    padding: 7px 10px;
-    width: 130px;
-    margin-right: 10px;
-    color: white;
-    border: 1px solid ${props => props && props.color};
-    background-color: ${props => props && props.color};
-    &:hover{
-        background-color: transparent;
-        color: ${props => props && props.color};
-    }
-    &:focus{
-        outline: none;
-    }
-
-    &:disabled{
-        opacity: 0.3;
-        cursor: not-allowed;
-    }
-`
+//     &:disabled{
+//         opacity: 0.3;
+//         cursor: not-allowed;
+//     }
+// `
 
 const MainTitle = styled(Title)`
     margin-top: 20px;
@@ -384,6 +405,9 @@ top: 10px;
 
 `
 
+
+
+//added
 const Section = styled.div`
     padding-bottom: 40px;
 `

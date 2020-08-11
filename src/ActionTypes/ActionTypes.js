@@ -16,6 +16,24 @@ export const candidateTypes = {
 }
 
 export const authTypes = {
- LOG_IN: 'LOG_IN',
- LOG_OUT: 'LOG_OUT'
+    AUTH: 'AUTH',
+    SAVE_DATA: 'SAVE_DATA'
+}
+
+export const rolesTypes = {
+    SAVE_CURRENT_ROLE: 'SAVE_CURRENT_ROLE',
+    SAVE_ALL_ROLES: 'SAVE_ALL_ROLES',
+    DELETE_CURRENT_ROLE: 'DELETE_CURRENT_ROLE',
+    FILTER_SEARCH_ROLES: 'FILTER_SEARCH_ROLES',
+}
+
+export const adminTypes = {
+    SAVE_CURRENT_ADMIN: 'SAVE_CURRENT_ADMIN',
+    SAVE_ALL_ADMINS : 'SAVE_ALL_ADMINS',
+    DELETE_CURRENT_ADMIN: 'DELETE_CURRENT_ADMIN',
+    FILTER_SEARCH_ADMINS: 'FILTER_SEARCH_ADMIN',
+}
+
+export const currentUserTypes = {
+    SAVE_USER_DATA: 'SAVE_USER_DATA'
 }

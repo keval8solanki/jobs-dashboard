@@ -6,10 +6,11 @@ import { NavLink } from 'react-router-dom'
 
 import { themeColor } from '../Common/Styles/StyledComponents'
 import CompanyLogo from '../Assets/Icons/fistbump-logo-white.svg'
+import { motion } from 'framer-motion'
 
-function NavBar() {
+function NavBar({variants}) {
     return (
-        <Header>
+        <Header variants={variants}>
             <StyledNavLink to="/"><BrandLogo src={CompanyLogo} /></StyledNavLink>
         </Header>
     )
@@ -20,7 +21,7 @@ export default NavBar
 const BrandLogo = styled.img`
     width: 80px;
 `
-const Header = styled.header`
+const Header = styled(motion.header)`
     position: sticky;
     top: 0;
     color: white;

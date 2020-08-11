@@ -1,26 +1,27 @@
 import { authTypes } from '../ActionTypes/ActionTypes'
 
 const initialState = {
-    isAuthenticated: true
+	isAuthenticated: false,
+	data: null,
 }
 
 const AuthReducer = (state = initialState, { type, payload }) => {
-    switch (type) {
-        case authTypes.LOG_IN:
-            return {
-                ...state,
-                isAuthenticated: payload
-            }
+	switch (type) {
+		case authTypes.AUTH:
+			return {
+				...state,
+				isAuthenticated: payload,
+			}
 
-        case authTypes.LOG_OUT:
-            return {
-                ...state,
-                isAuthenticated: payload
-            }
+		case authTypes.SAVE_DATA:
+			return {
+				...state,
+				data: payload,
+			}
 
-        default:
-            return state
-    }
+		default:
+			return state
+	}
 }
 
 export default AuthReducer

@@ -1,16 +1,17 @@
 import { authTypes } from '../ActionTypes/ActionTypes'
 
-export const login = (payload) => {
+export const auth = (payload) => {
     return {
-        type: authTypes.LOG_IN,
+        type: authTypes.AUTH,
         payload
     }
 }
 
-export const logout = (payload) => {
+export const saveData = (payload) => {
     return {
-        type: authTypes.LOG_OUT,
+        type: authTypes.SAVE_DATA,
         payload
     }
 }
+
 

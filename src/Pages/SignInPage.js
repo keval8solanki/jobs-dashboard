@@ -4,88 +4,151 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // User Imports
-import { Card, themeColor, StyledButton, statuscolors, LoadingIcon, noSpaces } from '../Common/Styles/StyledComponents'
+import {
+	Card,
+	themeColor,
+	statuscolors,
+	noSpaces,
+} from '../Common/Styles/StyledComponents'
 import { API_URI } from '../Endpoint'
-import { login } from '../Actions/AuthActions'
+import { auth, saveData } from '../Actions/AuthActions'
 
 // Assets
-import CompanyLogo from '../Assets/Icons/fistbump-logo.svg'
+import CompanyLogo from '../Assets/Icons/fistbump-logo-white.svg'
 import User from '../Assets/Icons/user.svg'
 import Password from '../Assets/Icons/password.svg'
+import AnimatedLogo from '../Components/AnimatedLogo'
+
+import { motion, AnimatePresence } from 'framer-motion'
 
 function SignInPage() {
+	const dispatch = useDispatch()
 
-    const dispatch = useDispatch()
+	const [username, setUsername] = useState('')
+	const [password, setPassword] = useState('')
+	const [errorMessage, setErrorMessage] = useState(null)
+	const [LoginText, setLoginText] = useState('Login')
 
-    const [name, setName] = useState('')
-    const [password, setPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState(null)
-    const [LoginText, setLoginText] = useState('Login')
+	const { isAuthenticated } = useSelector((state) => state.authData)
+	const isInputValid = username && password
 
-    const isInputValid = name && password
+	const reset = () => {
+		setUsername('')
+		setPassword('')
+	}
 
-    const reset = () => {
-        setName('')
-        setPassword('')
-    }
+	const changeHandler = (e, setData) => {
+		setData(e.target.value)
+		setErrorMessage(null)
+	}
 
-    const changeHandler = (e, setData) => {
-        setData(e.target.value)
-        setErrorMessage(null)
-    }
+	const loginHandler = async (e) => {
+		e.preventDefault()
+		const URL = `${API_URI}info/counts`
+		setLoginText('Verifying...')
+		reset()
 
-    const loginHandler = async (e) => {
-        e.preventDefault()
-        const URL = `${API_URI}login`
-        setLoginText('Verifying...')
-        reset()
+		try {
+			const { data } = await axios.get(URL, {
+				headers: {
+					username: username,
+					password: password,
+				},
+			})
 
-        try {
-            const data = { name, password }
-            await axios.post(URL, data)
-            dispatch(login(true))
-            setLoginText('Login')
-        } catch (err) {
-            dispatch(login(false))
-            reset()
-            setLoginText('Login')
-            setErrorMessage('Invalid Credentials')
-        }
-    }
-    return (
-        <SiginContainer>
+			dispatch(auth(true))
+			dispatch(saveData(data))
+			setLoginText('Login')
+		} catch (err) {
+			dispatch(auth(false))
+			reset()
+			setLoginText('Login')
+			setErrorMessage('Invalid Credentials')
+		}
+	}
 
-            <SigninSubContainer>
-                <BrandLogo src={CompanyLogo} />
-                <SigninCard>
-                    <SiginTitle>Admin</SiginTitle>
-                    <SigninForm onSubmit={loginHandler}>
-                        <InputContainer>
-                            <Icon src={User} />
-                            <Input value={name} onChange={(e) => changeHandler(e, setName)} type="text" placeholder="Username" />
-                        </InputContainer>
+	// Variants
+	const mainDivVariant = {
+		initial: {
+			x: '-10vw',
+			opacity: 0,
+		},
+		animate: {
+			x: 0,
+			opacity: 1,
+			transition: {
+				duration: 0.7,
+				ease: 'easeOut',
+				// type: 'spring',
+				// mass: 0.4,
+			},
+		},
+	}
+	const mainExitDivVariant = {
+		initial: {
+			x: 0,
+		},
+		animate: {
+			x: '+100vw',
+			transition: {
+				duration: 0.5,
+				// type: 'spring',
+				// mass: 0.4,
+			},
+		},
+	}
 
-                        <InputContainer>
-                            <Icon src={Password} />
-                            <Input value={password} onChange={(e) => changeHandler(e, setPassword)} type="password" placeholder="Password" />
-                        </InputContainer>
+	//--------------
 
-                        <Login disabled={!isInputValid}>{LoginText}</Login>
-                    </SigninForm>
-                    <Message>{errorMessage}</Message>
-                </SigninCard>
+	return (
+		<motion.div
+			variants={isAuthenticated ? mainExitDivVariant : mainDivVariant}
+			initial='initial'
+			animate='animate'
+			exit='exit'>
+			<SiginContainer>
+				<SigninSubContainer>
+					{/* <BrandLogo src={<AnimatedLogo/>} /> */}
+					<AnimatedLogo />
+					<SigninCard>
+						<SiginTitle>Admin</SiginTitle>
+						<SigninForm onSubmit={loginHandler}>
+							<InputContainer>
+								<Icon src={User} />
+								<Input
+									value={username}
+									onChange={(e) => changeHandler(e, setUsername)}
+									type='text'
+									placeholder='Username'
+								/>
+							</InputContainer>
 
-            </SigninSubContainer>
-        </SiginContainer>
-    )
+							<InputContainer>
+								<Icon src={Password} />
+								<Input
+									value={password}
+									onChange={(e) => changeHandler(e, setPassword)}
+									type='password'
+									placeholder='Password'
+								/>
+							</InputContainer>
+
+							<Login disabled={!isInputValid}>{LoginText}</Login>
+						</SigninForm>
+						<Message>{errorMessage}</Message>
+					</SigninCard>
+				</SigninSubContainer>
+			</SiginContainer>
+		</motion.div>
+	)
 }
 
 export default SignInPage
 
-
+// Styles
 
 const SiginTitle = styled.h2`
     ${noSpaces}
@@ -95,66 +158,68 @@ const SiginTitle = styled.h2`
     `
 
 const SiginContainer = styled.div`
-    background-color: #f4f4f4;
-    height: 100vh;
+	background-color: ${themeColor};
+	height: 100vh;
 `
 
 const BrandLogo = styled.img`
-    width: 250px;
-    margin-bottom: 20px;
+	width: 250px;
+	margin-bottom: 20px;
 `
 
 const SigninSubContainer = styled.div`
-    padding-top: 70px;
+	padding-top: 70px;
 `
 
 const SigninCard = styled(Card)`
-    margin: auto;
-    width: 300px;
+	margin: auto;
+	width: 300px;
 `
 
 const SigninForm = styled.form`
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 `
 
 const Login = styled.button`
-    border-style: none;
-    width: 100%;
-    margin: 10px 0px;
-    padding: 6px 12px;
-    background-color: ${themeColor};
-    color: white;
-    &:focus{
-        outline: none;
-    }
-    &:disabled{
-        opacity: 0.3
-    }
+	border-style: none;
+	width: 100%;
+	margin: 10px 0px;
+	padding: 6px 12px;
+	background-color: ${themeColor};
+	color: white;
+	&:focus {
+		outline: none;
+	}
+	&:disabled {
+		opacity: 0.3;
+	}
 `
 const Icon = styled.img`
-    margin-right: 10px;
+	margin-right: 10px;
 `
 
 const InputContainer = styled.div`
-    width: 100%;
-    display: flex;
+	width: 100%;
+	display: flex;
 `
 
 const Input = styled.input`
-    width: 100%;
-    margin: 10px 0px;
-    padding: 6px 12px;
-    border-style: none;
-    border-bottom: 1px solid #0000001f;
-    transition: all 0.5s;
-    &:focus{
-        outline: none;
-        border-bottom: 1px solid ${themeColor};
-    }
+	width: 100%;
+	margin: 10px 0px;
+	padding: 6px 12px;
+	border-style: none;
+	border-bottom: 1px solid #0000001f;
+	transition: all 0.5s;
+	&:focus {
+		outline: none;
+		border-bottom: 1px solid ${themeColor};
+	}
 `
 const Message = styled.p`
-    ${noSpaces}
-    font-size: 0.8em;
-    color: ${statuscolors.failed}
+	${noSpaces}
+	font-size: 0.8em;
+	color: ${statuscolors.failed};
 `
+
+// Motion
