@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/jobs-dashboard/static/css/main.5696487d.chunk.css",
-    "main.js": "/jobs-dashboard/static/js/main.26e58c8f.chunk.js",
+    "main.js": "/jobs-dashboard/static/js/main.8d6eb1c0.chunk.js",
     "runtime-main.js": "/jobs-dashboard/static/js/runtime-main.7223f700.js",
     "static/css/2.7b9c825f.chunk.css": "/jobs-dashboard/static/css/2.7b9c825f.chunk.css",
-    "static/js/2.dd0d842a.chunk.js": "/jobs-dashboard/static/js/2.dd0d842a.chunk.js",
+    "static/js/2.91c0fafb.chunk.js": "/jobs-dashboard/static/js/2.91c0fafb.chunk.js",
     "index.html": "/jobs-dashboard/index.html",
-    "precache-manifest.ea40f0a3c7facf9f7b025ae4324f54c3.js": "/jobs-dashboard/precache-manifest.ea40f0a3c7facf9f7b025ae4324f54c3.js",
+    "precache-manifest.d4c5a321e6a5c32fd43b685c1a93abfb.js": "/jobs-dashboard/precache-manifest.d4c5a321e6a5c32fd43b685c1a93abfb.js",
     "service-worker.js": "/jobs-dashboard/service-worker.js",
-    "static/js/2.dd0d842a.chunk.js.LICENSE.txt": "/jobs-dashboard/static/js/2.dd0d842a.chunk.js.LICENSE.txt",
+    "static/js/2.91c0fafb.chunk.js.LICENSE.txt": "/jobs-dashboard/static/js/2.91c0fafb.chunk.js.LICENSE.txt",
     "static/media/admin.svg": "/jobs-dashboard/static/media/admin.ae539f4e.svg",
     "static/media/candidate.svg": "/jobs-dashboard/static/media/candidate.98741c4a.svg",
     "static/media/close.svg": "/jobs-dashboard/static/media/close.1b3c0f53.svg",
@@ -29,8 +29,8 @@
   "entrypoints": [
     "static/js/runtime-main.7223f700.js",
     "static/css/2.7b9c825f.chunk.css",
-    "static/js/2.dd0d842a.chunk.js",
+    "static/js/2.91c0fafb.chunk.js",
     "static/css/main.5696487d.chunk.css",
-    "static/js/main.26e58c8f.chunk.js"
+    "static/js/main.8d6eb1c0.chunk.js"
   ]
 }
