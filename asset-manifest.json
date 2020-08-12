@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/jobs-dashboard/static/css/main.5696487d.chunk.css",
-    "main.js": "/jobs-dashboard/static/js/main.4953ccc1.chunk.js",
+    "main.js": "/jobs-dashboard/static/js/main.a74f56b2.chunk.js",
     "runtime-main.js": "/jobs-dashboard/static/js/runtime-main.7223f700.js",
     "static/css/2.7b9c825f.chunk.css": "/jobs-dashboard/static/css/2.7b9c825f.chunk.css",
     "static/js/2.60c708ff.chunk.js": "/jobs-dashboard/static/js/2.60c708ff.chunk.js",
     "index.html": "/jobs-dashboard/index.html",
-    "precache-manifest.b6a507dcc59acab49b0080f2525b934f.js": "/jobs-dashboard/precache-manifest.b6a507dcc59acab49b0080f2525b934f.js",
+    "precache-manifest.8f04fdc3efd96cbdf2a56c6cff249392.js": "/jobs-dashboard/precache-manifest.8f04fdc3efd96cbdf2a56c6cff249392.js",
     "service-worker.js": "/jobs-dashboard/service-worker.js",
     "static/js/2.60c708ff.chunk.js.LICENSE.txt": "/jobs-dashboard/static/js/2.60c708ff.chunk.js.LICENSE.txt",
     "static/media/admin.svg": "/jobs-dashboard/static/media/admin.ae539f4e.svg",
@@ -31,6 +31,6 @@
     "static/css/2.7b9c825f.chunk.css",
     "static/js/2.60c708ff.chunk.js",
     "static/css/main.5696487d.chunk.css",
-    "static/js/main.4953ccc1.chunk.js"
+    "static/js/main.a74f56b2.chunk.js"
   ]
 }
