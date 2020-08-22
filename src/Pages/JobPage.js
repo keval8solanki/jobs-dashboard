@@ -31,7 +31,7 @@ import Loader from '../Components/Loader'
 function JobPage(props) {
 	useResetState(saveCurrentCandidate)
 	const { data } = useSelector((state) => state.authData)
-	const permissions = data && data.authData.role_id.permissions
+	const permissions = data && data.role_id.permissions
 
 	const [searchVal, setSearchVal] = useState()
 	const headers = useHeaders()
@@ -82,7 +82,9 @@ function JobPage(props) {
 
 	const deleteJobHandler = async (job, setState) => {
 		try {
-			await axios.delete(`${API_URI}${job && job._id}`, { headers })
+			await axios.delete(`${API_URI}${job && job._id}`, {
+				withCredentials: true,
+			})
 			setState(true)
 			toast.success('Job deleted succesfully', {
 				position: toast.POSITION.BOTTOM_RIGHT,

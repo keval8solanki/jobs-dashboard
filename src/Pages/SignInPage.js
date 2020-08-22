@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
+import Cookies from 'js-cookie'
 
 // User Imports
 import {
@@ -47,20 +48,19 @@ function SignInPage() {
 
 	const loginHandler = async (e) => {
 		e.preventDefault()
-		const URL = `${API_URI}info/counts`
+		const URL = `${API_URI}login`
 		setLoginText('Verifying...')
 		reset()
 
 		try {
-			const { data } = await axios.get(URL, {
-				headers: {
-					username: username,
-					password: password,
-				},
-			})
+			const { data } = await axios.post(
+				URL,
+				{ username, password },
+				{ withCredentials: true }
+			)
 
+			dispatch(saveData(data.adminInfo))
 			dispatch(auth(true))
-			dispatch(saveData(data))
 			setLoginText('Login')
 		} catch (err) {
 			dispatch(auth(false))

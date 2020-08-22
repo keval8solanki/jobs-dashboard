@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HashRouter, Switch, Route, useLocation } from 'react-router-dom'
 import JobsPage from './Pages/JobsPage'
 import CandidatePage from './Pages/CandidatePage'
@@ -8,7 +8,7 @@ import SideBar from './Components/SideBar'
 import DashboardPage from './Pages/DashboardPage'
 import AppliedJobList from './Pages/AppliedJobList'
 import SignInPage from './Pages/SignInPage'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import ProfilePage from './Pages/ProfilePage'
 import JobPage from './Pages/JobPage'
 import InputJobDetails from './Components/InputJobDetails'
@@ -20,9 +20,28 @@ import AdminsPage from './Pages/AdminsPage'
 import InputAdminsDetails from './Components/InputAdminsDetails'
 import AdminPage from './Pages/AdminPage'
 import { motion, AnimatePresence } from 'framer-motion'
+import Cookies from 'js-cookie'
+import axios from 'axios'
+import { API_URI } from './Endpoint'
+import { useHeaders } from './Hooks/getData'
+import { saveData, auth } from './Actions/AuthActions'
+import Loader from './Components/Loader'
 
 function App() {
 	const { isAuthenticated } = useSelector((state) => state.authData)
+	// const [isAuthenticated, setIsAuthenticated] = useState(true)
+	const dispatch = useDispatch()
+
+	const headers = useHeaders()
+	useEffect(() => {
+		axios
+			.post(`${API_URI}verify`, {}, { withCredentials: true })
+			.then(({ data }) => {
+				dispatch(auth(true))
+				dispatch(saveData(data.adminInfo))
+			})
+			.catch((e) => dispatch(auth(false)))
+	}, [])
 
 	let inDev = false
 
@@ -124,11 +143,19 @@ function App() {
 		}
 	}
 
+	const Routes = () => {
+		if (isAuthenticated === null) {
+			return <Loader size='50px' />
+		} else if (isAuthenticated) {
+			return renderRoutes()
+		} else {
+			return renderSignin()
+		}
+	}
+
 	return (
 		<div onContextMenu={hideRightClick} className='App'>
-			<HashRouter>
-				{isAuthenticated ? renderRoutes() : renderSignin()}
-			</HashRouter>
+			<HashRouter>{Routes()}</HashRouter>
 		</div>
 	)
 }

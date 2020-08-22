@@ -23,7 +23,7 @@ const activeStyles = {
 
 function SideBar({ variants }) {
 	const { data } = useSelector((state) => state.authData)
-	const permissions = data && data.authData.role_id.permissions
+	const permissions = data && data.role_id.permissions
 
 	return (
 		<SidebarContainer variants={variants}>
@@ -84,6 +84,9 @@ const RouteIcon = styled.img`
 const RouteText = styled.p`
 	margin: 0px;
 	padding: 0px;
+	@media (max-width: 900px) {
+		display: none;
+	}
 `
 
 const Routes = styled(NavLink)`

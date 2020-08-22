@@ -34,17 +34,21 @@ const contentVariant = {
 
 function DashboardPage() {
 	const headers = useHeaders()
+	const [count, setCount] = useState()
+
 	const { data } = useSelector((state) => state.authData)
 	useEffect(() => {
 		axios
-			.get(`${API_URI}info/counts`, { headers })
-			.then(({ data }) => {})
+			.get(`${API_URI}info/counts`, { withCredentials: true })
+			.then(({ data }) => {
+				setCount(data)
+			})
 			.catch((err) => console.log(err))
 	}, [])
 
 	const renderCountData = (field) => {
-		if (data && data.data[field]) {
-			return data.data[field]
+		if (count && count[field]) {
+			return count[field]
 		} else {
 			return <Loader />
 		}
@@ -118,6 +122,10 @@ const InfoCard = styled(Card)`
 	transition: all 0.3s;
 	&:hover {
 		transform: scale(1.05);
+	}
+
+	@media (max-width: 400px) {
+		width: 200px;
 	}
 `
 

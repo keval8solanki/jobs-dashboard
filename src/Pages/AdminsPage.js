@@ -23,9 +23,7 @@ function AdminsPage() {
 	useSearch(searchVal, searchAdmins)
 
 	const { admins, filteredAdmins } = useSelector((state) => state.adminsData)
-	console.log(admins)
 	const currentData = searchVal === undefined ? admins : filteredAdmins
-	console.log(currentData)
 	const params = {
 		data: currentData,
 		route: 'admin',

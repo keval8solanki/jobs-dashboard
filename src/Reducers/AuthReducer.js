@@ -1,7 +1,7 @@
 import { authTypes } from '../ActionTypes/ActionTypes'
 
 const initialState = {
-	isAuthenticated: false,
+	isAuthenticated: null,
 	data: null,
 }
 

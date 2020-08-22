@@ -21,27 +21,30 @@ import {
 
 import { toast } from '../Components/Toast'
 import Loader from '../Components/Loader'
+import { candidateTypes } from '../ActionTypes/ActionTypes'
 
 function CandidatePage(props) {
+	const { candidate } = useSelector((state) => state.candidateData)
+
 	const headers = useHeaders()
 	const { data } = useSelector((state) => state.authData)
-	const permissions = data && data.authData.role_id.permissions
+	const permissions = data && data.role_id.permissions
 	const dispatch = useDispatch()
 	const [isStatusChanged, setIsStatusChanged] = useState(false)
 	const id = props.match.params.id
 	const { job } = useSelector((state) => state.jobsData)
 	const URI = `${API_URI}user/${id}`
 	useGetData(URI, saveCurrentCandidate)
-	const { candidate } = useSelector((state) => state.candidateData)
 
 	const changeStatusHandler = async (status) => {
 		const URL = `${API_URI}status/${
 			candidate && candidate._id
 		}?status=${status}`
 		try {
-			await axios.patch(URL, { jobID: job._id }, { headers })
+			await axios.patch(URL, { jobID: job._id }, { withCredentials: true })
 			setIsStatusChanged(true)
-			dispatch(changeStatus(status, statusIndex(candidate, job)))
+			const index = statusIndex(candidate, job)
+			dispatch(changeStatus(status, index))
 			toast.success('Status Updated', {
 				position: toast.POSITION.BOTTOM_RIGHT,
 			})

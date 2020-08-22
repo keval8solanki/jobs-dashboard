@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
+import Cookies from 'js-cookie'
+import { decryptWithAES } from '../Common/Functions/helperFunctions'
 
 export const useGetData = (endpoint, save) => {
 	const dispatch = useDispatch()
@@ -8,7 +10,7 @@ export const useGetData = (endpoint, save) => {
 
 	useEffect(() => {
 		axios
-			.get(endpoint, { headers })
+			.get(endpoint, { withCredentials: true })
 			.then(({ data }) => {
 				dispatch(save(data))
 			})
@@ -26,15 +28,14 @@ export const useSearch = (searchVal, search) => {
 }
 
 export const useHeaders = () => {
-	const { data } = useSelector((state) => state.authData)
-	if (data) {
+	const token = Cookies.get('token')
+	if (token) {
+		// const jwt = decryptWithAES(token, 'SECRET')
 		const headers = {
-			username: data.authData.username,
-			password: data.authData.password,
+			authorization: `Bearer ${token}`,
 		}
 		return headers
 	}
-	return null
 }
 
 export const useResetState = (save) => {

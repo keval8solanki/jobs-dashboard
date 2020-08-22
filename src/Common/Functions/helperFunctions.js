@@ -2,6 +2,7 @@ import { statuscolors } from '../Styles/StyledComponents'
 import axios from 'axios'
 import { API_URI } from '../../Endpoint'
 import { toast } from '../../Components/Toast'
+import CryptoJS from 'crypto-js'
 
 export const statusColor = (status) => {
 	if (status === 'Selected') {
@@ -25,7 +26,7 @@ export const daysAgoCalculator = (date) => {
 
 export const getAndSaveData = async (URI, save, dispatch) => {
 	try {
-		const { data } = await axios.get(URI)
+		const { data } = await axios.get(URI, { withCredentials: true })
 		dispatch(save(data))
 	} catch (err) {
 		console.log(err)
@@ -34,7 +35,7 @@ export const getAndSaveData = async (URI, save, dispatch) => {
 
 export const deleteJobHandler = async (job, setState) => {
 	try {
-		await axios.delete(`${API_URI}${job && job._id}`)
+		await axios.delete(`${API_URI}${job && job._id}`, { withCredentials: true })
 		setState(true)
 		toast.success('Job deleted succesfully', {
 			position: toast.POSITION.BOTTOM_RIGHT,
@@ -79,4 +80,14 @@ export const statusIndex = (candidate, job) => {
 		})
 		return index
 	}
+}
+
+export const encryptWithAES = (text, secret) => {
+	return CryptoJS.AES.encrypt(text, secret).toString()
+}
+
+export const decryptWithAES = (ciphertext, secret) => {
+	const bytes = CryptoJS.AES.decrypt(ciphertext, secret)
+	const originalText = bytes.toString(CryptoJS.enc.Utf8)
+	return originalText
 }
