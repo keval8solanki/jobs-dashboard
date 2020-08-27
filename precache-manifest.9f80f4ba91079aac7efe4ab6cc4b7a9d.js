@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f83bb4256b0e6b30dda78bbfcd534d3f",
+    "revision": "42b269846afdb134154774af4792b39b",
     "url": "/jobs-dashboard/index.html"
   },
   {
-    "revision": "b03c24d8a85c1134a152",
+    "revision": "2244641449e104724e3c",
     "url": "/jobs-dashboard/static/css/2.7b9c825f.chunk.css"
   },
   {
-    "revision": "fcec32a5c58ff663e6f5",
+    "revision": "5922cc4d3e9194a4a513",
     "url": "/jobs-dashboard/static/css/main.5696487d.chunk.css"
   },
   {
-    "revision": "b03c24d8a85c1134a152",
-    "url": "/jobs-dashboard/static/js/2.91c0fafb.chunk.js"
+    "revision": "2244641449e104724e3c",
+    "url": "/jobs-dashboard/static/js/2.96807e0a.chunk.js"
   },
   {
     "revision": "7b528285f2efe43acb7cb19e10675b3a",
-    "url": "/jobs-dashboard/static/js/2.91c0fafb.chunk.js.LICENSE.txt"
+    "url": "/jobs-dashboard/static/js/2.96807e0a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fcec32a5c58ff663e6f5",
-    "url": "/jobs-dashboard/static/js/main.8d6eb1c0.chunk.js"
+    "revision": "5922cc4d3e9194a4a513",
+    "url": "/jobs-dashboard/static/js/main.1d3b56d7.chunk.js"
   },
   {
     "revision": "f4c7dc860407de061a9c",
